@@ -1,0 +1,14 @@
+Q.10- What will the following code's output be in sequence and explain why?
+      function printNumber(num) {
+        console.log(num);
+       }
+       
+      console.log(1);
+      setTimeout(printNumber, 0, 2);
+      setTimeout(printNumber, 100, 3);
+      console.log(4);
+Ans:-
+     Output->   1  4  2  3
+     the output is in the sequence: 1, 4, 2, 3. This is because of the asynchronous behavior of setTimeout, 
+     which schedules the functions to be executed after a specified delay but doesn't block the execution
+     of the rest of the code.
