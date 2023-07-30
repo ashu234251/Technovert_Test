@@ -1,0 +1,32 @@
+Q11. Check the below given code, if there are any issues, fix them and explain the output
+
+    const numbers = [1, 2, 3, 4, 5];
+    const result = numbers.reduce((acc, num) => {
+      if (num % 2 === 0) {
+        acc.evens.push(num);
+      } else {
+        acc.odds.push(num);
+      }
+      return acc;
+    });
+    console.log(result);
+
+Ans:-The given code has an issue because the initial value for the reduce method is not provided. 
+The reduce method should have an initial value as its second argument, otherwise, the first element of
+the array will be used as the initial value. In this case, the first element of the array is 1, so the 
+accumulator acc will be an object with the properties odds and evens, but those properties will be
+undefined because they don't exist in the initial value.
+
+Corrected Code-
+const numbers = [1, 2, 3, 4, 5];
+
+const result = numbers.reduce((acc, num) => {
+  if (num % 2 === 0) {
+    acc.evens.push(num);
+  } else {
+    acc.odds.push(num);
+  }
+  return acc;
+}, { odds: [], evens: [] });
+
+console.log(result);
