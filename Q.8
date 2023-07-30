@@ -1,0 +1,30 @@
+Q.8-  In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
+      (function() {
+      
+          console.log(1); 
+      
+          setTimeout(function(){console.log(2)}, 1000); 
+      
+          setTimeout(function(){console.log(3)}, 0); 
+      
+          console.log(4);
+      
+      })();
+      
+Ans:  1  4  3  2
+      console.log(1); - This line will log the number 1 to the console immediately when the function
+                        is executed. So, the output will be "1".
+
+      console.log(4); - This line will also log the number 4 to the console immediately after the number
+                        1 is logged. So, the output will be "1 4".
+
+      setTimeout(function(){console.log(3)}, 0); - This line schedules the function that logs the number 
+                        3 to be executed after 0 milliseconds. However, the actual execution of the 
+                        function will be delayed due to the event loop. Although the delay is specified
+                        as 0 milliseconds, it doesn't mean the function will execute instantly. 
+
+     setTimeout(function(){console.log(2)}, 1000); - This line schedules the function that logs the
+                        number 2 to be executed after 1000 milliseconds (1 second). The previous
+                        setTimeout with 0 milliseconds delay will be executed first since it has 
+                        already passed its delay time. After that, the function logging number 2 will
+                        be executed. So, the final output will be "1 4 3 2".
